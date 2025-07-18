@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Customer - CRM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+    <div><a href="#">CRM</a></div>
+    <div>
+        <a href="customers.html">Customers</a>
+        <a href="add.html">Add</a>
+        <a href="logout.html">Logout</a>
+    </div>
+</nav>
+<div class="container">
+    <h2>Edit Customer</h2>
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone">
+    <button onclick="saveCustomer()">Save</button>
+</div>
+<script>
+const id = new URLSearchParams(window.location.search).get("id");
+const customers = JSON.parse(localStorage.getItem("customers") || "[]");
+const customer = customers[id];
+document.getElementById("name").value = customer.name;
+document.getElementById("email").value = customer.email;
+document.getElementById("phone").value = customer.phone;
+function saveCustomer() {
+    customers[id] = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value
+    };
+    localStorage.setItem("customers", JSON.stringify(customers));
+    window.location.href = "customers.html";
+}
+</script>
+</body>
+</html>

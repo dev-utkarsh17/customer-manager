@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Customer - CRM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+    <div><a href="#">CRM</a></div>
+    <div>
+        <a href="customers.html">Customers</a>
+        <a href="add.html">Add</a>
+        <a href="logout.html">Logout</a>
+    </div>
+</nav>
+<div class="container">
+    <h2>Add Customer</h2>
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone">
+    <button onclick="addCustomer()">Add</button>
+</div>
+<script>
+function addCustomer() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const customers = JSON.parse(localStorage.getItem("customers") || "[]");
+    customers.push({ name, email, phone });
+    localStorage.setItem("customers", JSON.stringify(customers));
+    window.location.href = "customers.html";
+}
+</script>
+</body>
+</html>

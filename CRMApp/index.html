@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - CRM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+    <div><a href="index.html">CRM</a></div>
+</nav>
+<div class="container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
+<script>
+function login() {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "customers.html";
+}
+</script>
+</body>
+</html>
